@@ -232,7 +232,7 @@ body.no-scroll{overflow:hidden}
     </nav>
 
     <div class="backbar" id="backbar" hidden>
-      <button class="backbtn" id="backbtn" type="button"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span id="backlabel">Back</span></button>
+      <button class="backbtn" id="backbtn" type="button"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span>Back to Home</span></button>
     </div>
 
     <!-- HOME -->
@@ -460,7 +460,6 @@ function render(id,prev){
   document.title = id==='home' ? BASE_TITLE : VIEWS[id]+' | Faysal Husaain';
   var bar=document.getElementById('backbar');
   bar.hidden = id==='home';
-  document.getElementById('backlabel').textContent='Back to '+VIEWS[prev && prev!==id ? prev : 'home'];
 }
 
 function go(id){
@@ -473,9 +472,12 @@ function go(id){
   render(id,current); jumpTo(0);
 }
 
+/* In-page button = "up" to Home (sections are siblings, not a stack).
+   Browser / phone back stays chronological via history. */
 function goBack(){
   var st=history.state;
-  if(st && st.depth>0) history.back(); else go('home');
+  if(st && st.depth>0 && st.prev==='home') history.back(); /* reuse the Home entry, keeps its scroll */
+  else go('home');
 }
 
 window.addEventListener('popstate',function(e){
