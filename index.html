@@ -49,7 +49,7 @@ button{font-family:inherit}
 .gdot{width:9px;height:9px;border-radius:50%;background:var(--green);animation:pulse 1.8s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(46,213,115,.55)}50%{opacity:.5;box-shadow:0 0 9px 2px rgba(46,213,115,.55)}}
 .menu{margin-top:36px;display:flex;flex-direction:column;gap:3px}
-.navlink{display:flex;align-items:center;gap:13px;padding:11px 14px;border-radius:11px;color:var(--muted);font-size:15px;font-weight:450;cursor:pointer;background:none;border:0;width:100%;text-align:left;transition:color .18s,background .18s}
+.navlink{line-height:normal;display:flex;align-items:center;gap:13px;padding:11px 14px;border-radius:11px;color:var(--muted);font-size:15px;font-weight:450;cursor:pointer;background:none;border:0;width:100%;text-align:left;transition:color .18s,background .18s}
 .navlink svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;flex:none}
 .navlink:hover{color:var(--ink)}
 .navlink.active{background:#1a1a1d;color:#fff}
@@ -80,7 +80,7 @@ h1:focus{outline:none}
 .loc{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-size:15px;white-space:nowrap}
 .loc svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2}
 .dash{flex:1;border-bottom:1px dotted var(--line);height:1px}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:11px;background:var(--card);border:1px solid var(--border);color:var(--ink);font-size:14px;font-weight:450;cursor:pointer;white-space:nowrap;transition:border-color .2s,background .2s}
+.btn{line-height:normal;display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:11px;background:var(--card);border:1px solid var(--border);color:var(--ink);font-size:14px;font-weight:450;cursor:pointer;white-space:nowrap;transition:border-color .2s,background .2s}
 .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
 .btn:hover{background:#1b1b1f;border-color:#34343a}
 
@@ -96,8 +96,8 @@ h1:focus{outline:none}
 .frame img{width:100%;animation:pan 20s ease-in-out infinite}
 .proj:hover .frame img{animation-play-state:paused}
 @keyframes pan{0%,7%{transform:translateY(0)}50%,57%{transform:translateY(calc(-100% + var(--frameH)))}100%{transform:translateY(0)}}
-.auto-frame{position:relative;height:270px;border-radius:11px;border:1px solid var(--border);background:#f4f4f4;padding:18px;display:grid;place-items:center}
-.auto-frame img{border-radius:6px;width:auto;max-width:100%;max-height:100%;object-fit:contain}
+.auto-frame{position:relative;border-radius:11px;border:1px solid var(--border);background:#f4f4f4;padding:18px;display:grid;place-items:center}
+.auto-frame img{border-radius:6px;width:100%}
 .zoomable{cursor:zoom-in}
 .zoomable:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 .zoom-hint{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:rgba(10,10,11,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:12.5px;font-weight:500;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
@@ -130,16 +130,13 @@ h1:focus{outline:none}
 .tnav:hover{background:#1e1e22;border-color:#3a3a40;transform:translateY(-50%) scale(1.06)}
 .tnav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
 .tprev{left:-54px}.tnext{right:-54px}
-.tdots{display:flex;gap:0;justify-content:center;margin-top:16px}
-.tdot{width:16px;height:24px;margin:0;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center;transition:width .35s cubic-bezier(.22,.61,.36,1)}
-.tdot .pip{display:block;width:8px;height:8px;border-radius:50%;background:#3a3a40;overflow:hidden;transition:width .35s cubic-bezier(.22,.61,.36,1),border-radius .35s}
-.tdot .fill{display:block;height:100%;width:0;background:var(--green);border-radius:inherit}
-.tdot.active{width:34px}
-.tdot.active .pip{width:26px;border-radius:5px}
-.tdot:focus-visible{outline:2px solid var(--green);outline-offset:1px;border-radius:6px}
+.tdots{display:flex;gap:8px;justify-content:center;margin-top:22px}
+.tdot{position:relative;width:8px;height:8px;border-radius:50%;background:#3a3a40;border:0;cursor:pointer;padding:0;overflow:hidden;transition:width .35s cubic-bezier(.22,.61,.36,1)}
+.tdot span{display:block;height:100%;width:0;background:var(--green);border-radius:inherit}
+.tdot.active{width:26px;border-radius:5px}
 @keyframes tfill{from{width:0}to{width:100%}}
-.tdot.active .fill.run{animation:tfill 3.7s linear forwards}
-.tcarousel.paused .tdot.active .fill.run{animation-play-state:paused}
+.tdot.active span.run{animation:tfill 3.7s linear forwards}
+.tcarousel.paused .tdot.active span.run{animation-play-state:paused}
 
 /* stack */
 .stack-list{display:flex;flex-direction:column;gap:16px}
@@ -205,8 +202,7 @@ h1:focus{outline:none}
   .proj.feature{display:block}
   .feature .proj-t{font-size:16px;margin:16px 0 6px}
   .feature .proj-d{font-size:14.5px;margin-bottom:0}
-    .auto-frame{height:210px}
-  .sec-h{font-size:23px;margin-bottom:20px}
+    .sec-h{font-size:23px;margin-bottom:20px}
   .quote{max-width:100%;padding:24px}
   .tcarousel{max-width:100%}
   .tnav{display:none}
@@ -257,7 +253,7 @@ body.no-scroll{overflow:hidden}
   .rm-body{padding:12px}
   .backbar{margin:0 0 20px}
 }
-@media(prefers-reduced-motion:reduce){.tdot.active .fill{width:100%}.frame img{animation:none}.view{animation:none}.gdot{animation:none}.rm-scrim,.rm-panel,.m-menu,.m-scrim{animation:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.tdot.active span{width:100%}.frame img{animation:none}.view{animation:none}.gdot{animation:none}.rm-scrim,.rm-panel,.m-menu,.m-scrim{animation:none;transition:none}}
 </style></head>
 <body>
 <div class="layout">
@@ -274,15 +270,13 @@ body.no-scroll{overflow:hidden}
       <a class="navlink" href="#contact" data-go="contact"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>Contact</a>
       <a class="navlink" href="#" data-resume><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Resume</a>
     </nav>
-    <a class="btn btn-primary side-cta" href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>Book a call</a>
   </aside>
 
   <!-- MAIN -->
   <main class="main">
     <div class="topbar">
       <a class="tb-brand" href="#home" data-go="home" aria-label="Home"><span class="tb-logo"><img fetchpriority="high" src="assets/photo.webp" width="340" height="340" alt="Faysal" style="width:100%;height:100%;object-fit:cover"></span></a>
-      <div class="tb-right"><a class="btn btn-primary tb-cta" href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book>Book a call</a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg class="i-open" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg class="i-open" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="m-scrim" id="mscrim"></div>
     <nav class="m-menu" id="mmenu" aria-label="Main">
@@ -300,7 +294,7 @@ body.no-scroll{overflow:hidden}
 
     <!-- HOME -->
     <section class="view active" id="home">
-      <h1 class="page-h grad">Hey, I’m Faysal</h1>
+      <h1 class="page-h grad">Hey, I'm Faysal</h1>
       <p class="page-sub">I set up the system that follows up with your leads for you, so they turn into booked calls without anyone chasing them. Built inside GoHighLevel, shaped around how your business already runs.</p>
       <div class="locrow">
         <span class="loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Lahore, Pakistan</span>
@@ -327,7 +321,7 @@ body.no-scroll{overflow:hidden}
           <button class="tnav tprev" id="tprev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
           <div class="tviewport"><div class="ttrack" id="ttrack"><div class="tslide"><div class="quote"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg></div><p>I hired Faysal to build a funnel on GoHighLevel and could not be happier. His expertise in design, CSS and JavaScript truly impressed me, and the funnel he delivered exceeded my expectations in every way.</p><div class="qwho"><span class="qav">C</span><div><div class="n">Colt B.</div><div class="c">United States</div></div></div></div></div><div class="tslide"><div class="quote"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg></div><p>Faysal did an outstanding job on our website development, with real attention to detail and going past all expectations. Working with him was a breeze, quick to respond and easy to talk to. Really good work, better than expected.</p><div class="qwho"><span class="qav">M</span><div><div class="n">Matt W.</div><div class="c">Australia</div></div></div></div></div><div class="tslide"><div class="quote"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg></div><p>I am so impressed with the migration from ClickFunnels to GoHighLevel. The process was smooth and everything worked perfectly once transferred. Faysal recreated the funnels accurately and set up the automations. Professional and easy to work with.</p><div class="qwho"><span class="qav">P</span><div><div class="n">Pam W.</div><div class="c">Australia · Repeat client</div></div></div></div></div><div class="tslide"><div class="quote"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg></div><p>Faysal is a true GoHighLevel expert. He built me a custom funnel and dashboard that exceeded my expectations, and he was communicative and responsive the whole way through. I would highly recommend him to anyone looking for a GoHighLevel expert.</p><div class="qwho"><span class="qav">L</span><div><div class="n">LandPro Connect</div><div class="c">United States</div></div></div></div></div><div class="tslide"><div class="quote"><div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 18l-6 3.4 1.4-6.8L2.3 9l6.9-.7z"/></svg></div><p>Thanks to Faysal for his expert help building my AI bot. He went above and beyond and was very patient. His professionalism and expertise made the whole thing smooth and hassle free. Highly recommended, you will not be sorry when you hire Faysal.</p><div class="qwho"><span class="qav">E</span><div><div class="n">Eric T.</div><div class="c">United States</div></div></div></div></div></div></div>
           <button class="tnav tnext" id="tnext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-          <div class="tdots" id="tdots"><button class="tdot active" aria-label="Go to review 1"><span class="pip"><span class="fill"></span></span></button><button class="tdot" aria-label="Go to review 2"><span class="pip"><span class="fill"></span></span></button><button class="tdot" aria-label="Go to review 3"><span class="pip"><span class="fill"></span></span></button><button class="tdot" aria-label="Go to review 4"><span class="pip"><span class="fill"></span></span></button><button class="tdot" aria-label="Go to review 5"><span class="pip"><span class="fill"></span></span></button></div>
+          <div class="tdots" id="tdots"><button class="tdot active" aria-label="Go to review 1"><span></span></button><button class="tdot" aria-label="Go to review 2"><span></span></button><button class="tdot" aria-label="Go to review 3"><span></span></button><button class="tdot" aria-label="Go to review 4"><span></span></button><button class="tdot" aria-label="Go to review 5"><span></span></button></div>
         </div>
       </div>
 
@@ -357,21 +351,21 @@ body.no-scroll{overflow:hidden}
     <!-- ABOUT -->
     <section class="view" id="about">
       <h1 class="page-h grad">Get to know me</h1>
-      <p class="page-sub">Hi, I’m Faysal. I have been building in GoHighLevel for over seven years and past a hundred projects, and the job has always come down to one thing. A business is getting leads and most of them slip through the cracks because nobody follows up fast enough or often enough. That is the gap I close.</p>
+      <p class="page-sub">Hi, I'm Faysal. I have been building in GoHighLevel for over seven years and past a hundred projects, and the job has always come down to one thing. A business is getting leads and most of them slip through the cracks because nobody follows up fast enough or often enough. That is the gap I close.</p>
       <div class="locrow"><span class="loc"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Lahore, Pakistan</span><span class="dash"></span></div>
 
       <div class="sec">
         <h2 class="sec-h grad">Experience</h2>
         <div class="xlist">
-          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Freelance GoHighLevel &amp; AI Automation Developer</div><div class="xs">Self-employed, 2023 – Present</div></div>
-          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Funnel Builder &amp; Web Developer</div><div class="xs">Conversion Elevation, 2020 – 2023</div></div>
+          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Freelance GoHighLevel &amp; AI Automation Developer</div><div class="xs">Self-employed, 2023 - Present</div></div>
+          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Funnel Builder &amp; Web Developer</div><div class="xs">Conversion Elevation, 2020 - 2023</div></div>
         </div>
       </div>
       <div class="hr"></div>
       <div class="sec">
         <h2 class="sec-h grad">Education</h2>
         <div class="xlist">
-          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>BSc Computer Science</div><div class="xs">University of Sargodha, 2014 – 2019</div></div>
+          <div class="xitem"><div class="xt"><svg viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>BSc Computer Science</div><div class="xs">University of Sargodha, 2014 - 2019</div></div>
         </div>
       </div>
       <div class="hr"></div>
@@ -461,19 +455,19 @@ body.no-scroll{overflow:hidden}
     <!-- CONTACT -->
     <section class="view" id="contact">
       <h1 class="page-h grad">Get in touch</h1>
-      <p class="page-sub">Tell me what you need set up or fixed. Send me the funnel, the migration, or the mess that needs sorting, and I’ll tell you straight how I’d approach it.</p>
+      <p class="page-sub">Tell me what you need set up or fixed. Send me the funnel, the migration, or the mess that needs sorting, and I'll tell you straight how I'd approach it.</p>
       <div class="locrow" style="margin-top:34px">
-        <a class="btn btn-primary" href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>Book a call</a>
+        <a class="btn" href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>Book a call</a>
         <a class="btn" href="https://www.linkedin.com/in/faysalhusaain" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         <a class="btn" href="mailto:faysalhusaain@gmail.com">Email me <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg></a>
         <span class="dash"></span>
       </div>
-      <p class="page-sub" style="margin-top:8px;font-size:14.5px">Prefer email? Reach me at <a href="mailto:faysalhusaain@gmail.com" style="color:var(--green);text-decoration:underline;text-underline-offset:3px">faysalhusaain@gmail.com</a></p>
+      <p class="page-sub" style="margin-top:8px;font-size:14.5px">Prefer email? Reach me at <a href="mailto:faysalhusaain@gmail.com" style="color:var(--green)">faysalhusaain@gmail.com</a></p>
     </section>
 
     <!-- SHARED: connect + footer -->
     <div class="connect">
-      <h2><a href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book>Let’s Connect!</a></h2>
+      <h2><a href="https://calendly.com/faysalhusaain/discovery-call-30-min" target="_blank" rel="noopener" data-book>Let's Connect!</a></h2>
       <div class="foot-hr"></div>
       <div class="foot">
         <div>© 2026 Faysal Husaain. All rights reserved.</div>
@@ -708,12 +702,12 @@ document.addEventListener('keydown',function(e){
   var n=track.children.length, i=0;
   var wrap=document.querySelector('.tcarousel');
   var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function restart(){ if(RM) return; var s=dots[i].querySelector('.fill'); s.classList.remove('run'); void s.offsetWidth; s.classList.add('run'); }
-  function upd(){ track.style.transform='translateX('+(-i*100)+'%)'; dots.forEach(function(d,k){ d.classList.toggle('active',k===i); d.setAttribute('aria-current',k===i?'true':'false'); if(k!==i) d.querySelector('.fill').classList.remove('run'); }); restart(); }
+  function restart(){ if(RM) return; var s=dots[i].querySelector('span'); s.classList.remove('run'); void s.offsetWidth; s.classList.add('run'); }
+  function upd(){ track.style.transform='translateX('+(-i*100)+'%)'; dots.forEach(function(d,k){ d.classList.toggle('active',k===i); d.setAttribute('aria-current',k===i?'true':'false'); if(k!==i) d.querySelector('span').classList.remove('run'); }); restart(); }
   function go(x){ i=(x+n)%n; upd(); }
   dots.forEach(function(d,k){
     d.addEventListener('click',function(){go(k);});
-    d.querySelector('.fill').addEventListener('animationend',function(){ if(k===i) go(i+1); });
+    d.querySelector('span').addEventListener('animationend',function(){ if(k===i) go(i+1); });
   });
   document.getElementById('tprev').addEventListener('click',function(){go(i-1);});
   document.getElementById('tnext').addEventListener('click',function(){go(i+1);});
