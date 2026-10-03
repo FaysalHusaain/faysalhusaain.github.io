@@ -16,6 +16,8 @@
 <meta property="og:image:alt" content="Faysal Husaain, GoHighLevel &amp; Automation Specialist">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="assets/photo.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/mixed-by-colt.webp">
+<link rel="preload" as="image" href="assets/westfin-capital.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Faysal Husaain","jobTitle":"GoHighLevel & Automation Specialist","url":"https://faysalhusaain.github.io/","image":"https://faysalhusaain.github.io/assets/photo.webp","email":"mailto:faysalhusaain@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"sameAs":["https://www.linkedin.com/in/faysalhusaain"],"knowsAbout":["GoHighLevel","Marketing automation","Sales funnels","ClickFunnels migration","Zapier","Make","n8n"]}</script>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="180x180" href="assets/icon-180.png">
@@ -92,9 +94,8 @@ h1:focus{outline:none}
 /* projects */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:34px 30px}
 .proj{min-width:0}
-.frame{position:relative;height:var(--frameH);overflow:hidden;border-radius:11px;border:1px solid var(--border);background:var(--card)}
-.frame img{width:100%;animation:pan 20s ease-in-out infinite;opacity:0;transition:opacity .45s ease}
-.frame img.is-loaded{opacity:1}
+.frame{position:relative;height:var(--frameH);overflow:hidden;border-radius:11px;border:1px solid var(--border);background:#fff}
+.frame img{width:100%;animation:pan 20s ease-in-out infinite}
 .proj:hover .frame img{animation-play-state:paused}
 @keyframes pan{0%,7%{transform:translateY(0)}50%,57%{transform:translateY(calc(-100% + var(--frameH)))}100%{transform:translateY(0)}}
 .auto-frame{position:relative;border-radius:11px;border:1px solid var(--border);background:#f4f4f4;padding:18px;display:grid;place-items:center}
@@ -308,10 +309,10 @@ body.no-scroll{overflow:hidden}
       <div class="sec">
         <h2 class="sec-h grad">Recent Projects</h2>
         <div class="grid2"><article class="proj">
-  <div class="frame"><img loading="lazy" decoding="async" src="assets/mixed-by-colt.webp" width="760" height="6001" alt="MIXED BY COLT"></div>
+  <div class="frame"><img src="assets/mixed-by-colt.webp" width="760" height="6001" alt="MIXED BY COLT"></div>
   <h3 class="proj-t">MIXED BY COLT</h3><p class="proj-d">Sales funnel for a Grammy nominated mixing and mastering engineer</p>
 </article><article class="proj">
-  <div class="frame"><img loading="lazy" decoding="async" src="assets/westfin-capital.webp" width="760" height="3484" alt="WESTFIN CAPITAL"></div>
+  <div class="frame"><img src="assets/westfin-capital.webp" width="760" height="3484" alt="WESTFIN CAPITAL"></div>
   <h3 class="proj-t">WESTFIN CAPITAL</h3><p class="proj-d">Membership funnel for a grants and funding community</p>
 </article></div>
         <div class="hr-btn"><a class="btn" href="#works" data-go="works">View all projects <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
@@ -384,13 +385,13 @@ body.no-scroll{overflow:hidden}
       <div class="sec" style="margin-top:34px">
         <h2 class="sec-h grad">Funnels &amp; Landing Pages</h2>
         <div class="grid2"><article class="proj">
-  <div class="frame"><img loading="lazy" decoding="async" src="assets/mixed-by-colt.webp" width="760" height="6001" alt="MIXED BY COLT"></div>
+  <div class="frame"><img src="assets/mixed-by-colt.webp" width="760" height="6001" alt="MIXED BY COLT"></div>
   <h3 class="proj-t">MIXED BY COLT</h3><p class="proj-d">Sales funnel for a Grammy nominated mixing and mastering engineer</p>
 </article><article class="proj">
-  <div class="frame"><img loading="lazy" decoding="async" src="assets/westfin-capital.webp" width="760" height="3484" alt="WESTFIN CAPITAL"></div>
+  <div class="frame"><img src="assets/westfin-capital.webp" width="760" height="3484" alt="WESTFIN CAPITAL"></div>
   <h3 class="proj-t">WESTFIN CAPITAL</h3><p class="proj-d">Membership funnel for a grants and funding community</p>
 </article><article class="proj">
-  <div class="frame"><img loading="lazy" decoding="async" src="assets/saas-landing.webp" width="760" height="5428" alt="SAAS LAUNCH LANDING PAGE"></div>
+  <div class="frame"><img src="assets/saas-landing.webp" width="760" height="5428" alt="SAAS LAUNCH LANDING PAGE"></div>
   <h3 class="proj-t">SAAS LAUNCH LANDING PAGE</h3><p class="proj-d">Marketing site for a new software product launch</p>
 </article></div>
       </div>
@@ -690,12 +691,6 @@ function toast(msg){
   if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast'; t.setAttribute('role','status'); document.body.appendChild(t); }
   t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show')},2600);
 }
-
-/* project screenshots fade in once loaded (no white flash) */
-document.querySelectorAll('.frame img').forEach(function(im){
-  function done(){ im.classList.add('is-loaded'); }
-  if(im.complete && im.naturalWidth) done(); else { im.addEventListener('load',done); im.addEventListener('error',done); }
-});
 
 /* ---------- mobile menu ---------- */
 var burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu'), mscrim=document.getElementById('mscrim');
